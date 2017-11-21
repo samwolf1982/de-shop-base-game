@@ -73,7 +73,7 @@ class TopupbalanceController extends Controller
             $modif=100;
 if ($points){
     $points->u_id=Yii::$app->request->post('Topupbalance')['u_id'];
-    $points->shnappunkte=($modif*Yii::$app->request->post('Topupbalance')['total']);
+    $points->shnappunkte=($points->shnappunkte + ($modif*Yii::$app->request->post('Topupbalance')['total']));
     if ($points->validate()){
         $points->save();
     }else{
@@ -82,6 +82,7 @@ if ($points){
 }else{
     $points=new Points();
     $points->u_id=Yii::$app->request->post('Topupbalance')['u_id'];
+    $points->shnappunkte=($modif*Yii::$app->request->post('Topupbalance')['total']);
   if ($points->validate()){
       $points->save();
   }else{

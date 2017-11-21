@@ -3,7 +3,7 @@
 use yii\db\Migration;
 
 /**
- * Handles the creation of table `topupbalance`.
+ * Handles the creation of table `topupbalance`.   пополнение
  */
 class m171120_130505_create_topupbalance_table extends Migration
 {
@@ -23,6 +23,17 @@ class m171120_130505_create_topupbalance_table extends Migration
             'total'=>$this->decimal(10,2),
             'created_at'=>$this->dateTime(),
         ],$tableOptions);
+
+        // add foreign key for table `topupbalance`
+        $this->addForeignKey(
+            'fk-topupbalance-user_id',
+            'topupbalance',
+            'u_id',
+            'user',
+            'id',
+            'RESTRICT'
+        );
+
     }
 
     /**

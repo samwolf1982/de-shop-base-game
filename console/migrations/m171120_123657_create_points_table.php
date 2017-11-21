@@ -26,6 +26,15 @@ class m171120_123657_create_points_table extends Migration
 
         ],$tableOptions);
 
+        // add foreign key for table `points`
+        $this->addForeignKey(
+            'fk-points-user_id',
+            'points',
+            'u_id',
+            'user',
+            'id',
+            'RESTRICT'
+        );
 
 
 
